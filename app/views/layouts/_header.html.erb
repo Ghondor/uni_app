@@ -1,0 +1,59 @@
+<header>
+  <ul id="userDropdown1" class="dropdown-content">
+    <% if (logged_in?) %>
+      <li><%= link_to  "My profile", student_path(current_user) %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Logout", logout_path,  method: :delete %></li>
+    <% else %>
+      <li><%=  link_to "Signup",  new_student_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Login", login_path %></li>
+    <% end %>
+  </ul>
+  <ul id="userDropdown2" class="dropdown-content">
+    <% if (logged_in?) %>
+      <li><%= link_to  "My profile", student_path(current_user) %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Logout", logout_path,  method: :delete %></li>
+    <% else %>
+      <li><%=  link_to "Signup",  new_student_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Login", login_path %></li>
+    <% end %>
+  </ul>
+  <nav>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="nav-wrapper">
+            <%= link_to 'Tech University', root_path, class: "brand-logo right" %>
+            <%= link_to material_icon.menu, "#", "data-target": "burger-icon", class: "sidenav-trigger" %>
+            <!--                <a href="#" data-target="burger-icon" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <li><%= link_to 'Courses', root_path %></li>
+              <%if logged_in? %>
+                <li><%= link_to 'Students', students_path %></li>
+              <% end %>
+              <li>
+                <a class="dropdown-trigger" href="#" data-target="userDropdown1">
+                  Account<i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <ul class="sidenav" id="burger-icon">
+    <li><%= link_to 'Courses', root_path %></li>
+    <%if logged_in? %>
+      <li><%= link_to 'Students', students_path %></li>
+    <% end %>
+    <li>
+      <a class="dropdown-trigger" href="#" data-target="userDropdown2">
+        Account<i class="material-icons right">arrow_drop_down</i>
+      </a>
+    </li>
+  </ul>
+</header>

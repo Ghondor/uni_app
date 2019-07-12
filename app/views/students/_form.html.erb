@@ -1,0 +1,36 @@
+<%= render 'shared/errors', obj: @student %>
+
+<div class="container">
+  <div class="row signup-form">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <h3 class="header center-align"><%= @student.new_record? ? "Sign Up" : "Edit your profile" %></h3>
+        <div class="row">
+          <%= form_for @student, html: {class: "col s12"} do |f| %>
+            <div class="row">
+              <div class="input-field col m12 s12">
+                <%= f.label :name, class: "active" %>
+                <%= f.text_field :name, class: "validate" %>
+              </div>
+              <div class="input-field col m12 s12">
+                <%= f.label :email, class: "active" %>
+                <%= f.email_field :email, class: "validate" %>
+              </div>
+                <div class="input-field col m12 s12">
+                  <%= f.label :password, class: "active" %>
+                  <%= f.password_field :password, class: "validate" %>
+                </div>
+                <div class="input-field col m12 s12">
+                  <%= f.label :password_confirmation, class: "active" %>
+                  <%= f.password_field :password_confirmation, class: "validate" %>
+                </div>
+              <div class="input-field col s12 center">
+                <%= f.button(@student.new_record? ? 'Signup <i class="material-icons right">arrow_forward</i>'.html_safe : 'Submit Changes <i class="material-icons right">arrow_forward</i>'.html_safe, class: "waves-effect waves-light btn-large orange") %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
